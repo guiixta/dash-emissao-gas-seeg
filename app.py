@@ -345,7 +345,11 @@ app.layout = html.Div(children=[
 def atualizarNiveis(setor, processoEm, formaEm, processoEs, tipoAtv, atividadeEs, tipoEm, atividadeEc, produto, gas, intervalo):
 
     if not setor:
-        return [], [], [], [], [], [], [], [], ['Todos'], {} ;
+        return (
+            [], [], [], [], [], [], [], [], ['Todos'],
+            go.Figure(), go.Figure(),
+            "", "", "", "", "", "", "", "", "", "", ""
+        )
 
 
     dffilter = df[df['nivel_1'] == setor].copy();
