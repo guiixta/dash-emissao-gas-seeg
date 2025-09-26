@@ -9,7 +9,7 @@ import plotly.graph_objects as go;
 pio.templates.default = "simple_white";
 
 
-df = pd.read_csv('db/br_seegEmissoes.csv');
+df = pd.read_csv('https://raw.githubusercontent.com/guiixta/dash-emissao-gas-seeg/refs/heads/main/db/br_seegEmissoes.csv');
 
 linksExternos = ['https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4']
 
