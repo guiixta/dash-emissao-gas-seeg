@@ -404,6 +404,11 @@ def atualizarNiveis(setor, processoEm, formaEm, processoEs, tipoAtv, atividadeEs
 
     linhaCresimento = dffLinha.groupby('ano', as_index=False)['emissao'].sum();
 
+    if linhaCresimento.empty:
+        empty_fig = go.Figure()
+        empty_fig.update_layout(title="Nenhum dado encontrado para os filtros selecionados.")
+        return nivel2, nivel3, nivel4, nivel5, nivel6, nivel7, nivel8, nivel9, gases, empty_fig, empty_fig, 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A'
+
     linhaCresimentoPositiva = linhaCresimento[linhaCresimento['emissao'] > 0];
 
     mensagemAnoMenor = f"Emissão de {intervalo[0]}";
@@ -601,5 +606,3 @@ def emissãoSetor(gas):
     
 if __name__ == '__main__':
     app.run(debug=True);
-
-
