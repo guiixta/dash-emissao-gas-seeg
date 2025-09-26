@@ -1,3 +1,4 @@
+from functools import lru_cache
 import pandas as pd;
 import plotly.express as px;
 import dash 
@@ -8,13 +9,19 @@ import plotly.graph_objects as go;
 
 pio.templates.default = "simple_white";
 
+@lru_cache(maxsize=None)
+def load_data():
 
-df = pd.read_csv('https://raw.githubusercontent.com/guiixta/dash-emissao-gas-seeg/refs/heads/main/db/br_seegEmissoes.csv');
+    df = pd.read_csv('https://raw.githubusercontent.com/guiixta/dash-emissao-gas-seeg/refs/heads/main/db/br_seegEmissoes.csv');
+    return df
+
+df = load_data();
 
 linksExternos = ['https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4']
 
 app = dash.Dash(__name__, external_scripts=linksExternos, title="Dahsboard Emissões de Gases - SEEG");
 
+server = app.server
 
 setores = [];
 for setor in df['nivel_1'].unique():
