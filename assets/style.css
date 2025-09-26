@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.rc-slider-track {
+    background-color: #007BFF; 
+}
+
+
+.rc-slider-handle {
+    background-color: #0056b3; 
+    border-color: #0056b3;    
+}
+
+.rc-slider-rail {
+    background-color: #d3d3d3; 
+}
+
+
+
+@keyframes grow-up {
+  from {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+.grafico-animado-barras .bars rect {
+  transform-origin: bottom; 
+  animation: grow-up 0.8s ease-out;
+}
